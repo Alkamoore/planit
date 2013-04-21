@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+	<title>PLANit -- a Scheduler for Cooperative Use</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="Author" content="Alexis Moore and Laura Cerrito" />
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-plan.css">
+	
+	
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.10.2.custom.min.js"></script>
+	<script type="text/javascript" src="js/init-cal.js"></script>
+	</head>
+<body>
+	<header>
+		<h1>Plan<b>it</b></h1>
+		<a href="calendar.html">Calendar</a>
+		<a href="plan.html">Plan Something</a>
+		<a href="login.html">Login</a>
+		<a href="#">Sign Up</a>
+	</header>
+	<section id="planning">
+		<form id="plan">
+			<h2>Plan Something</h2>
+				<fieldset id="inputs">
+					<input type="text" id="when" placeholder="When?" autofocus required/>
+					<input type="text" id="where" placeholder="Where?" required/>
+					<input type="text" id="what" placeholder="What?" required/>
+					<input type="text" id="invite" placeholder="With Who?" required/>
+					<textarea id="comments" placeholder="Comments" /></textarea>
+				</fieldset>
+				<fieldset id="actions">
+					<input type="submit" value="Plan It!" id="submit"/>
+				</fieldset>
+		</form>
+		<div id="planner"></div>
+	</section>
+	<footer>
+		<p><a href="">PLANit</a> ©  2013 Laura Cerrito and Alexis Moore as part of the CS 810B Final Project</p>
+	</footer>
+</body>
+</html>
