@@ -58,8 +58,9 @@ header a, a:visited {
 	font-size: 0.9em;
 	color: rgba(168,168,168,1);
 	text-decoration: none;
-	display: inline;
 	float: right;
+	display: inline;
+	text-align: right;
 	padding: 1em;
 }
 
@@ -70,6 +71,7 @@ header a:hover {
 	text-decoration: none;
 	display: inline;
 	float: right;
+	margin-right: 0em;
 	padding: 1em;
 }
 
@@ -97,16 +99,19 @@ section {
 	margin: 1em auto;
 	background-color: rgba(255,255,255,1);
 	padding: 1em;
-	float: center;
 }
 
 #planning {
-	min-height: 31em;
+	column-count: 2;
+		-moz-column-count: 2;
+		-webkit-column-count: 2; 
+	column-rule: 1em;
+		-moz-column-rule: 1em;
+		-webkit-column-rule: 1em;
 }
 
-
-#calendar {
-	min-height: 20em;
+#planner {
+	width: 95%;
 }
 
 
@@ -147,12 +152,6 @@ img {
 	min-width: 0%;
 }
 
-#planner {
-	float: right;
-	display: inline block;
-	top: 0em;
-	width: 53%;
-}
 
 /*************************************/
 /*            Footer CSS            */
@@ -191,7 +190,6 @@ p a, a:visited {
 	background: -ms-linear-gradient(top, rgba(255,255,255,1), rgba(240,240,240,1));
 	background: -o-linear-gradient(top, rgba(255,255,255,1), rgba(240,240,240,1));
 	background: -webkit-gradient(linear, top, rgba(255,255,255,1), rgba(240,240,240,1));
-	float: bottom;
 	height: 40%;
 	width: 40%;
 	margin: 2em auto 2em auto;
@@ -304,8 +302,10 @@ fieldset {
 
 #actions {
 	padding: 0.3em;
-	margin: 1em 4em 0em 4em;
-	width: 70%;
+	margin: 1em 0em 0em 3em;
+	width: 100%;
+	display: inline;
+	
 }
 
 #submit {		
@@ -320,7 +320,6 @@ fieldset {
     color: rgba(255,255,255,1);
 	border-width: 0.1em;
     border-style: solid;
-	float: left;
     height: 2em;
     padding: 0em;
     width: 20%;
@@ -358,12 +357,19 @@ fieldset {
   border: none;
 }
 
+#actions p
+{
+	font-family: 'Carrois Gothic', sans-serif;
+	font-size: 0.9em;   
+    display: inline; 
+	text-align: right;
+	text-decoration: none;
+	margin-left: 3em;
+}
+
 #actions a
 {
-    color: rgba(125,173,147,1);    
-    float: right;
-    line-height: 1.5em;
-    margin-left: 0.7em;
+	color: rgba(125,173,147,1); 
 }
 
 #actions a:hover
@@ -385,10 +391,8 @@ fieldset {
 	background: -o-linear-gradient(top, rgba(255,255,255,1), rgba(240,240,240,1));
 	background: -webkit-gradient(linear, top, rgba(255,255,255,1), rgba(240,240,240,1));
 	display: inline block;
-	float: left;
-	width: 40%;
-	height: 40%;
-	margin: 1em;
+	width: 90%;
+	margin: 0em 0em;
 	padding: 1em;
 	box-shadow:
         0 0 0.1em rgba(0,0,0,0.2),  
