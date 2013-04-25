@@ -50,18 +50,34 @@ header {
 	background-color: rgba(255,255,255,1);
 	margin: 3em auto;
 	padding: 1em;
+	column-count: 2;
+		-moz-column-count: 2;
+		-webkit-column-count: 2; 
+	column-rule: 1em;
+		-moz-column-rule: 1em;
+		-webkit-column-rule: 1em;
 	border-top: solid 0.4em rgba(39,43,38,1);
 }
 
-header a, a:visited {
+nav {
+	width: 20%;
+	display: inline block;
+	column-span: 1;
+		-moz-column-span: 1;
+		-webkit-column-span: 1; 
+	column-width: 20%;
+		-moz-column-width: 20%;
+		-webkit-column-width: 20%;
+	text-align: right;
+}
+
+header a,  header a:visited {
 	font-family: 'Carrois Gothic', sans-serif;
 	font-size: 0.9em;
 	color: rgba(168,168,168,1);
 	text-decoration: none;
-	float: right;
-	display: inline;
-	text-align: right;
 	padding: 1em;
+	line-height: 3em;
 }
 
 header a:hover {
@@ -69,19 +85,23 @@ header a:hover {
 	font-size: 0.9em;
 	color: rgba(10,81,109,1);
 	text-decoration: none;
-	display: inline;
-	float: right;
-	margin-right: 0em;
 	padding: 1em;
 }
 
 header h1 {
+	width: 80%;
 	color: rgba(39,43,38,1);
 	font-family: 'Carrois Gothic', sans-serif;	
 	font-size:  2.5em;
 	text-transform: uppercase;
 	font-weight: 600;
-	display: inline;
+	display:  inline block;
+	column-span: 1;
+		-moz-column-span: 1;
+		-webkit-column-span: 1; 
+	column-width: 80%;
+		-moz-column-width: 80%;
+		-webkit-column-width: 80%;
 }
 
 h1 b {
@@ -448,7 +468,8 @@ fieldset {
 	{
 		width: 90%;
 	}
-	#planning {
+
+	#planning, header {
 	column-count: 1;
 		-moz-column-count: 1;
 		-webkit-column-count: 1; 
@@ -460,7 +481,7 @@ fieldset {
 	
 	header a, header a:visited, header a:hover
 	{
-		font-size: 0.75em;
+		padding: 0.5em;
 	}
 	
 	p
