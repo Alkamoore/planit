@@ -50,42 +50,22 @@ header {
 	background-color: rgba(255,255,255,1);
 	margin: 3em auto;
 	padding: 1em;
-	column-count: 2;
-		-moz-column-count: 2;
-		-webkit-column-count: 2; 
-	column-rule: 1em;
-		-moz-column-rule: 1em;
-		-webkit-column-rule: 1em;
 	border-top: solid 0.4em rgba(39,43,38,1);
 }
 
-nav {
-	width: 20%;
-	display: inline block;
-	column-span: 1;
-		-moz-column-span: 1;
-		-webkit-column-span: 1; 
-	column-width: 20%;
-		-moz-column-width: 20%;
-		-webkit-column-width: 20%;
-	text-align: right;
-}
 
 header a,  header a:visited {
 	font-family: 'Carrois Gothic', sans-serif;
 	font-size: 0.9em;
 	color: rgba(168,168,168,1);
 	text-decoration: none;
-	padding: 1em;
-	line-height: 3em;
+	padding-right: 0.7em;
 }
 
 header a:hover {
 	font-family: 'Carrois Gothic', sans-serif;
-	font-size: 0.9em;
 	color: rgba(10,81,109,1);
 	text-decoration: none;
-	padding: 1em;
 }
 
 header h1 {
@@ -96,12 +76,6 @@ header h1 {
 	text-transform: uppercase;
 	font-weight: 600;
 	display:  inline block;
-	column-span: 1;
-		-moz-column-span: 1;
-		-webkit-column-span: 1; 
-	column-width: 80%;
-		-moz-column-width: 80%;
-		-webkit-column-width: 80%;
 }
 
 h1 b {
@@ -195,7 +169,6 @@ p a, a:visited {
 /*             Login CSS            */
 /***********************************/
 #login {
-`   position: absolute;
     z-index: 0;
 	background-color: rgba(255,255,255,1);
 	background: linear-gradient(top, rgba(255,255,255,1), rgba(240,240,240,1));
@@ -204,10 +177,10 @@ p a, a:visited {
 	background: -ms-linear-gradient(top, rgba(255,255,255,1), rgba(240,240,240,1));
 	background: -o-linear-gradient(top, rgba(255,255,255,1), rgba(240,240,240,1));
 	background: -webkit-gradient(linear, top, rgba(255,255,255,1), rgba(240,240,240,1));
-	width: 100%;
+	width: 90%;
 	max-width: 25em;
-	margin: 2em auto 2em auto;
-	padding: 2em;
+	margin: 0em auto;
+	padding: 1em;
 	box-shadow:
         0 0 0.1em rgba(0,0,0,0.2),  
         0 0.1em 0em rgba(0,0,0,.1),
@@ -374,11 +347,9 @@ fieldset {
 #actions p
 {
 	font-family: 'Carrois Gothic', sans-serif;
-	font-size: 0.9em;   
-    display: inline; 
-	text-align: right;
+	font-size: 0.9em;  
+	margin: 1em auto;
 	text-decoration: none;
-	margin-left: 3em;
 }
 
 #actions a
@@ -435,7 +406,7 @@ fieldset {
     height: 0.01em;
     position: absolute;
     top: 0.6em;
-    width: 2em;   
+    width: 1em;   
 }
 
 #plan h2:after { 
@@ -462,6 +433,7 @@ fieldset {
 /*************************************/
 /*         Media Screen CSS         */
 /***********************************/
+
 @media screen and (max-width: 600px)
 {
 	section, header, footer 
@@ -474,14 +446,10 @@ fieldset {
 		-moz-column-count: 1;
 		-webkit-column-count: 1; 
 	}
+	
 	#planner, #plan 
 	{
 		width: 90%;
-	}
-	
-	header a, header a:visited, header a:hover
-	{
-		padding: 0.5em;
 	}
 	
 	p
@@ -491,9 +459,22 @@ fieldset {
 	
 	#login
 	{
-		width: 80%;
-		transform: scale(0.9,0.9);
-		-moz-transform: scale(0.9,0.9);
-		-webkit-transform: scale(0.9,0.9);
+		width: 90%;
+	}
+	
+	#inputs input, #inputs textarea
+	{
+		width: 90%;
+		margin: 1em auto;
+	}
+	
+	#actions
+	{
+		margin: 1em auto;
+	}
+	
+	#login h2:before, #login h2:after, #plan h2:before, #plan h2:after
+	{
+		display: none;
 	}
 }
