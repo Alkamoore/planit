@@ -109,26 +109,64 @@
 
 .ui-datepicker-calendar td {
     padding: 0;
-    text-align: center;
+    text-align: center;    
+	width: 7.5em;
+	min-width: 1em;
     line-height: 2em;
+
 	
 }
  
-.ui-datepicker-calendar .ui-state-default {
+.ui-datepicker-calendar  td .ui-state-default {
     display: block;
-    width: 7.5em;
-	height:7.5em;
     outline: none;
     text-decoration: none;
-    color: rgba(39,43,38,1);
+	height: 7em;
+	color: rgba(39,43,38,1);
     border: 0.1em solid rgba(200,200,200,1);
+
 }
 
-.ui-datepicker-calendar .ui-state-active {
+.ui-datepicker-calendar  td .ui-state-active {
     color: rgba(128,86,101,1);
     border: 0.1em solid rgba(128,86,101,1);
+	height: 7em;
 }
  
 .ui-datepicker-other-month .ui-state-default { 
 	color: rgba(168,168,168,1); 
+}
+
+
+@media screen and (max-width: 1000px)
+{
+	.ui-datepicker-calendar  td .ui-state-default,
+	.ui-datepicker-calendar  td .ui-state-active {
+		height: 5em;
+	}
+	
+}
+
+@media screen and (max-width: 600px)
+{
+	.ui-datepicker-calendar  td .ui-state-default,
+	.ui-datepicker-calendar  td .ui-state-active {
+		height: 3em;
+	}
+	
+	.ui-datepicker-month,
+	.ui-datepicker-year, 
+	.ui-datepicker-prev, 
+	.ui-datepicker-next {
+	font-size: 1em;
+	}
+}
+
+@media screen and (max-width: 400px)
+{
+	.ui-datepicker-calendar  td .ui-state-default,
+	.ui-datepicker-calendar  td .ui-state-active {
+		height: 0.6em;
+	}
+	
 }
