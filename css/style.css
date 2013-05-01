@@ -10,10 +10,10 @@
 /***********************************/
 
 @font-face {
-  font-family: 'Carrois Gothic';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Carrois Gothic'), local('CarroisGothic-Regular'), url(http://themes.googleusercontent.com/static/fonts/carroisgothic/v1/GCgb7bssGpwp7V5ynxmWy2IHn70NeZKJ0uStDo7Dza8.woff) format('woff');
+	font-family: 'Carrois Gothic';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Carrois Gothic'), local('CarroisGothic-Regular'), url(http://themes.googleusercontent.com/static/fonts/carroisgothic/v1/GCgb7bssGpwp7V5ynxmWy2IHn70NeZKJ0uStDo7Dza8.woff) format('woff');
 }
 
 body {
@@ -93,19 +93,6 @@ section {
 	margin: 1em auto;
 	background-color: rgba(255,255,255,1);
 	padding: 1em;
-}
-
-#planning {
-	column-count: 2;
-		-moz-column-count: 2;
-		-webkit-column-count: 2; 
-	column-rule: 1em;
-		-moz-column-rule: 1em;
-		-webkit-column-rule: 1em;
-}
-
-#planner {
-	width: 95%;
 }
 	
 h1 {
@@ -297,7 +284,7 @@ fieldset {
 
 #submit {		
     background-color: rgba(10,81,109,1);
-    background-image: -webkit-gradient(linear, left top, left bottom, rgba(12,98,132,1), torgba(10,81,109,1));
+    background-image: -webkit-gradient(linear, left top, left bottom, rgba(12,98,132,1), to rgba(10,81,109,1));
     background-image: -webkit-linear-gradient(top, rgba(12,98,132,1), rgba(10,81,109,1));
     background-image: -moz-linear-gradient(top, rgba(12,98,132,1), rgba(10,81,109,1));
     background-image: -ms-linear-gradient(top, rgba(12,98,132,1), rgba(10,81,109,1));
@@ -377,7 +364,8 @@ fieldset {
 	background: -webkit-gradient(linear, top, rgba(255,255,255,1), rgba(240,240,240,1));
 	display: inline block;
 	width: 90%;
-	margin: 0em 0em;
+	max-width: 25em;
+	margin: 0em auto;
 	padding: 1em;
 	box-shadow:
         0 0 0.1em rgba(0,0,0,0.2),  
@@ -427,6 +415,11 @@ fieldset {
     background-image: -o-linear-gradient(right, rgba(39,43,38,1),rgba(255,255,255,1));
     background-image: linear-gradient(right, rgba(39,43,38,1),rgba(255,255,255,1));
     left: 0;
+}
+
+#inputs planner {
+    padding: 0.7em;
+    margin: 1em 3.5em 0em 1em;
 }
 
 

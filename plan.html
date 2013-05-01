@@ -10,8 +10,9 @@
 	
 	
 	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-1.10.2.custom.min.js"></script>
-	<script type="text/javascript" src="js/init-cal.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.10.2.custom.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.multidatespicker.js"></script>
+    <script type="text/javascript" src="js/init-cal.js"></script>
 	</head>
 <body>
 	<header>
@@ -21,11 +22,11 @@
 		<a href="login.html">Login</a>
 		<a href="#">Sign Up</a>
 	</header>
-	<section id="planning">
+	<section>
 		<form id="plan">
 			<h2>Plan Something</h2>
 				<fieldset id="inputs">
-					<input type="text" id="when" placeholder="When?" autofocus required/>
+					<input type="text" id="planner" placeholder="When?" required/>
 					<input type="text" id="where" placeholder="Where?" required/>
 					<input type="text" id="what" placeholder="What?" required/>
 					<input type="text" id="invite" placeholder="With Who?" required/>
@@ -35,7 +36,6 @@
 					<input type="submit" value="Plan It!" id="submit"/>
 				</fieldset>
 		</form>
-		<div id="planner"></div>
 	</section>
 	<footer>
 		<p><a href="">PLANit</a> ©  2013 Laura Cerrito and Alexis Moore as part of the CS 810B Final Project</p>
