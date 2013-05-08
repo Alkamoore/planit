@@ -417,6 +417,34 @@ fieldset {
     left: 0;
 }
 
+#selectable{
+	margin: 1em 3.5em 0em 3em;
+	padding: 0.7em;
+	width: 70%;
+	border-radius: 0.4em;
+		-moz-border-radius: 0.4em;
+		-webkit-border-radius: 0.4em;
+	background: rgba(240,240,240,1);
+	border: 0.1em solid rgba(200,200,200,1);
+	box-shadow: 0 0.1em 0.1em rgba(200,200,200,1) inset, 0 0.1em 0 
+	rgba(255,255,255,1);
+		-moz-box-shadow: 0 0.1em 0.1em rgba(200,200,200,1) inset, 0 0.1em 0 rgba(255,255,255,1);
+		-webkit-box-shadow: 0 0.1em 0.1em rgba(200,200,200,1) inset, 0 0.1em 0 rgba(255,255,255,1);
+}
+
+#selectable li {
+    padding: 0.3em;
+	font-size: 0.9em;
+	font-family: 'Carrois Gothic', sans-serif;
+	display: inline;
+	margin: 3em 0em 3em 0em;
+	list-style-type: none;
+}
+
+#inputs #selectable .ui-selected {
+    color: rgba(125,173,147,1);
+}
+
 #inputs planner {
     padding: 0.7em;
     margin: 1em 3.5em 0em 1em;
