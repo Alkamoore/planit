@@ -14,7 +14,7 @@
 	$main_body->set_filenames(array(
 	 'plan_body' => 'plan.htm'
 	));
-	
+	$SETTINGS["CAL"] = "plan";
 	/*if(isset($_POST['login']))
 	{
 		//Default error message

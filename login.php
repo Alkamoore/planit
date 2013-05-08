@@ -15,7 +15,7 @@
 	 'login_body' => 'login.htm'
 	));
 	
-	/*if(isset($_POST['login']))
+	if(isset($_POST['login']))
 	{
 		//Default error message
 		$my_text = 'Invalid login information, please go back and try again.<br /><br /><a href="index.php">Return</a>';
@@ -27,7 +27,10 @@
 			
 			//Connect to the DB and find the user
 			connect();
-			$row = mysql_fetch_assoc(mysql_query("SELECT * FROM " . $SETTINGS["TABLE_PREFIX"] . "users WHERE username = '" . $username . "' AND password = '" . md5($password) . "'"));
+			$query = array('username'=>$username, 'password'=>md5($password));
+			$row = $db->users->findOne($query);
+
+			//$row = mysql_fetch_assoc(mysql_query("SELECT * FROM " . $SETTINGS["TABLE_PREFIX"] . "users WHERE username = '" . $username . "' AND password = '" . md5($password) . "'"));
 			if($row)
 			{
 				//If the row exists, update the DB session log to match this user
@@ -41,8 +44,8 @@
 			xconnect();
 		}
 	
-		header("Location: view_projects.php");
-	} else if (isset($_GET['logout']))
+		//header("Location: view_projects.php");
+	} /*else if (isset($_GET['logout']))
 	{
 		connect();
 		mysql_query("DELETE FROM ". $SETTINGS["TABLE_PREFIX"] . "sessions WHERE session_id = " . session_id());

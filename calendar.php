@@ -15,6 +15,7 @@
 	 'calendar_body' => 'calendar.htm'
 	));
 	
+	$SETTINGS["CAL"] = "cal";
 	/*if(isset($_POST['login']))
 	{
 		//Default error message

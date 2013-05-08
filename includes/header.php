@@ -29,11 +29,16 @@ if(isset($_SESSION) && (bool) $_SESSION['is_logged_in'])
 	$header->assign_block_vars('account_nav', Array());
 }
 
+if(!isset($SETTINGS["CAL"]))
+{
+	$SETTINGS["CAL"] = "plan";
+}
 //Assign template variables
 $header->assign_vars(array(
 	'TITLE' => $SETTINGS["PAGE_TITLE"],
 	'USERNAME' => $u_name,
-	'TEMPLATE_DIR' => $SETTINGS["TEMPLATE_DIR"]
+	'TEMPLATE_DIR' => $SETTINGS["TEMPLATE_DIR"],
+	'CAL' => $SETTINGS["CAL"]
 ));
 	 
 //Parse, and display.
