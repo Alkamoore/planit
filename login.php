@@ -7,7 +7,7 @@
 	include('includes/sessions.php');
 	include('includes/template.php');
 	
-	$SETTINGS["PAGE_TITLE"] = "Index Page";
+	$SETTINGS["PAGE_TITLE"] = "Login Page";
 	
 	//Init the template (You can echo as many templates as listed in the filenames)
 	$main_body = new Template($SETTINGS["TEMPLATE_DIR"]);
@@ -19,7 +19,7 @@
 	if(isset($_POST['login']))
 	{
 		//Default error message
-		$my_text = 'Invalid login information, please go back and try again.<br /><br /><a href="index.php">Return</a>';
+		$my_text = 'Invalid login information, please go back and try again.<br /><br /><a href="login.php">Return</a>';
 		if(isset($_POST['user']) && isset($_POST['pass']))
 		{
 			//Get the user/pass from the POST data
@@ -42,7 +42,6 @@
 				$my_text = 'Welcome, ' . $_SESSION["username"] . "!";
 			}
 			
-			//xconnect();
 		}
 		$main_body->assign_vars(array(
 			'MESSAGE' => $my_text,
@@ -51,7 +50,7 @@
 		$main_body->pparse('simple_body');
 		include('includes/footer.php');
 		//header("Location: calendar.php");
-	}/** else if (isset($_GET['logout']))
+	} else if (isset($_GET['logout']))
 	{
 		
 		mysql_query("DELETE FROM ". $SETTINGS["TABLE_PREFIX"] . "sessions WHERE session_id = " . session_id());
@@ -67,15 +66,9 @@
 		include('includes/footer.php');
 	} else if ((bool) $_SESSION['is_logged_in'])
 	{
-		header("Location: view_projects.php");
-	} */else
+		header("Location: calendar.php");
+	} else
 	{
-		if (isset($_GET["forgotPass"])){
-			$main_body->assign_block_vars('forgot_password', Array());
-		}
-		if (isset($_GET["user"])){
-			$main_body->assign_block_vars('recovered_password', Array());
-		}
 		//Echo everything
 		include('includes/header.php');
 		$main_body->pparse('login_body');
