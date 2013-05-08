@@ -15,6 +15,9 @@ $(document).ready(function(){
         dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     });
 	
-	$( "#selectable" ).selectable();
+	$("select").multiselect({
+		noneSelectedText: "What Time?",
+		selectedText: "What Time?",
+	});
  
  });

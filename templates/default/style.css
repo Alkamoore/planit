@@ -189,7 +189,7 @@ p a, a:visited {
     position: relative;
 }
 
-#login h2:after, #login h2:before {
+#login h2:after, #login h2:before  {
     background-color: rgba(39,43,38,1);
     content: "";
     height: 0.01em;
@@ -350,9 +350,9 @@ fieldset {
 }
 
 /*************************************/
-/*             Planning CSS         */
+/*       Planning and Reg CSS       */
 /***********************************/
-#plan {
+#plan, #register {
 `   position: absolute;
     z-index: 0;
 	background-color: rgba(255,255,255,1);
@@ -376,7 +376,7 @@ fieldset {
         0 0.5em 0 rgba(0,0,0,.1);
 }
 
-#plan h2 {
+#plan h2, #register h2 {
     text-shadow: 0 0.1em 0 rgba(0,0,0,.3), 0px 0.2em 0 rgba(0,0,0,.1);
     text-transform: uppercase;
     text-align: center;
@@ -388,7 +388,7 @@ fieldset {
     position: relative;
 }
 
-#plan h2:after, #plan h2:before {
+#plan h2:after, #plan h2:before, #register h2:before, #register h2:after {
     background-color: rgba(39,43,38,1);
     content: "";
     height: 0.01em;
@@ -397,7 +397,7 @@ fieldset {
     width: 1em;   
 }
 
-#plan h2:after { 
+#plan h2:after, #register h2:after{ 
     background-image: -webkit-gradient(linear, left top, right top, rgba(39,43,38,1),rgba(255,255,255,1));
     background-image: -webkit-linear-gradient(left, rgba(39,43,38,1),rgba(255,255,255,1));
     background-image: -moz-linear-gradient(left, rgba(39,43,38,1),rgba(255,255,255,1));
@@ -407,7 +407,7 @@ fieldset {
     right: 0;
 }
 
-#plan h2:before {
+#plan h2:before,#register h2:before {
     background-image: -webkit-gradient(linear, right top, left top, rgba(39,43,38,1),rgba(255,255,255,1));
     background-image: -webkit-linear-gradient(right, rgba(39,43,38,1),rgba(255,255,255,1));
     background-image: -moz-linear-gradient(right, rgba(39,43,38,1),rgba(255,255,255,1));
@@ -417,38 +417,14 @@ fieldset {
     left: 0;
 }
 
-#selectable{
-	margin: 1em 3.5em 0em 3em;
-	padding: 0.7em;
-	width: 70%;
-	border-radius: 0.4em;
-		-moz-border-radius: 0.4em;
-		-webkit-border-radius: 0.4em;
-	background: rgba(240,240,240,1);
-	border: 0.1em solid rgba(200,200,200,1);
-	box-shadow: 0 0.1em 0.1em rgba(200,200,200,1) inset, 0 0.1em 0 
-	rgba(255,255,255,1);
-		-moz-box-shadow: 0 0.1em 0.1em rgba(200,200,200,1) inset, 0 0.1em 0 rgba(255,255,255,1);
-		-webkit-box-shadow: 0 0.1em 0.1em rgba(200,200,200,1) inset, 0 0.1em 0 rgba(255,255,255,1);
-}
 
-#selectable li {
-    padding: 0.3em;
-	font-size: 0.9em;
-	font-family: 'Carrois Gothic', sans-serif;
-	display: inline;
-	margin: 3em 0em 3em 0em;
-	list-style-type: none;
-}
-
-#inputs #selectable .ui-selected {
-    color: rgba(125,173,147,1);
-}
 
 #inputs planner {
     padding: 0.7em;
     margin: 1em 3.5em 0em 1em;
 }
+
+
 
 
 /*************************************/
