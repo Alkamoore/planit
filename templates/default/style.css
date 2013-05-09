@@ -95,6 +95,19 @@ section {
 	padding: 1em;
 }
 
+
+#events p {
+	background: rgba(240,240,240,1);
+	border-radius: 1em;
+		-webkit-border-radius: 1em;
+		-moz-border-radius: 1em;
+	padding: 0.7em;
+	margin: 1em;
+	width: 50%;
+	margin: 1em auto;
+	text-indent: 0em;
+}
+
 p { 
 	color: rgba(168,168,168,1);
 	font-family: 'Carrois Gothic', sans-serif;

@@ -34,12 +34,17 @@ $(document).ready(function(){
 					event = events[i];
 				}
 				i++;
+				}
+				if (event) {
+					$('#events').text("");
+					$('#events').append('<p>' + event.Title + '</p>');
+				}
+				else
+				{
+					$('#events').text("");
+				}
 			}
-			if (event) {
-				alert(event.Title);
-			}
-		}
-	});
+		});
 	
     $('#planner').multiDatesPicker({
         firstDay: 1,
@@ -51,7 +56,9 @@ $(document).ready(function(){
 </script>
 <link rel="stylesheet" type="text/css" href="{TEMPLATE_DIR}jquery-cal.css">
 <section>
-<h1>Your Calendar</h1>
+	<h1>Your Calendar of Events</h1>
 	<div id="calendar"></div>
+	<h2>Events Planned</h2>
+	<div id="events"></div>
 </section>
 	
