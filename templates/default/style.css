@@ -118,11 +118,6 @@ p {
 	font-size: 0.9em;
 }
 
-p #error { 
-	color: rgba(128,86,101,1);
-	font-weight: thick;
-}
-
 img {
 	width: auto;
 	max-width: 100%;
@@ -223,13 +218,14 @@ p a, a:visited {
     left: 0;
 }
 
-#inputs input {
+#inputs select {
     background: rgba(240,240,240,1);
 	font-size: 0.9em;
 	font-family: 'Carrois Gothic', sans-serif;
     padding: 0.7em;
-    margin: 1em 3.5em 0em 3.5em;
-    width: 70%;
+	display: inline block;
+	width: 20%;
+	margin: 1em 0em 0em 0em;
     border: 0.1em solid rgba(200,200,200,1);
     border-radius: 0.4em;
 		-moz-border-radius: 0.4em;
@@ -239,13 +235,14 @@ p a, a:visited {
 		-webkit-box-shadow: 0 0.1em 0.1em rgba(200,200,200,1) inset, 0 0.1em 0 rgba(255,255,255,1);
 }
 
-#inputs textarea {
+#inputs input,#inputs textarea {
     background: rgba(240,240,240,1);
-    padding: 0.7em;
 	font-size: 0.9em;
 	font-family: 'Carrois Gothic', sans-serif;
-    margin: 1em 3.5em 0em 3.5em;
-    width: 70%;
+    padding: 0.7em;
+	display: block;
+	width: 70%;
+	margin: 1em 0em 0em 0em;
     border: 0.1em solid rgba(200,200,200,1);
     border-radius: 0.4em;
 		-moz-border-radius: 0.4em;
@@ -276,7 +273,8 @@ p a, a:visited {
 fieldset {
     border: 0;
     padding: 0;
-    margin: 0;
+	margin: 1em 3.5em 0em 3.5em;
+    width: 100%;
 }
 
 #actions {
@@ -357,7 +355,7 @@ fieldset {
 /*************************************/
 /*       Planning and Reg CSS       */
 /***********************************/
-#plan, #register, #view {
+#plan, #register {
 `   position: absolute;
     z-index: 0;
 	background-color: rgba(255,255,255,1);
@@ -430,35 +428,6 @@ fieldset {
 }
 
 
-#view h2{
-    text-shadow: 0 0.1em 0 rgba(0,0,0,.3), 0px 0.2em 0 rgba(0,0,0,.1);
-    text-transform: uppercase;
-    text-align: justify;
-    color: rgba(39,43,38,1);
-    margin: 0 0 1.4em 0;
-    letter-spacing: 0.2em;
-    font-family: 'Carrois Gothic', sans-serif;
-	font-size: 1.7em;
-	border-bottom: 0.1em solid rgba(168,168,168,1);
-}
-
-#view p{
-    text-shadow: 0 0.1em 0 rgba(0,0,0,.3), 0px 0.2em 0 rgba(0,0,0,.1);
-    text-transform: uppercase;
-    text-align: justify;
-    color: rgba(168,168,168,1);
-    margin: 0 0 1.4em 0;
-    letter-spacing: 0.2em;
-    font-family: 'Carrois Gothic', sans-serif;
-	font-size: 1.2em;
-}
-
-#view b{
-	font-weight: normal;
-    color: rgba(128,86,101,1);
-	
-}
-
 
 
 /*************************************/
@@ -493,12 +462,12 @@ fieldset {
 		width: 90%;
 	}
 	
-	#inputs input, #inputs textarea
-	{
-		width: 90%;
-		margin: 1em auto;
+	fieldset {
+		margin: 1em 2em;
+		width: 100%;
 	}
-	
+
+
 	#actions
 	{
 		margin: 1em auto;
