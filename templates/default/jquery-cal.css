@@ -127,6 +127,11 @@
 
 }
 
+.ui-datepicker-calendar td.highlight {
+	background-color: rgba(128,86,101,1);
+	color: rgba(255,255,255,1);
+}
+
 .ui-datepicker-calendar  td .ui-state-active {
     color: rgba(128,86,101,1);
     border: 0.1em solid rgba(128,86,101,1);
