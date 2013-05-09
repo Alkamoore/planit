@@ -34,17 +34,17 @@ $(document).ready(function(){
 					event = events[i];
 				}
 				i++;
-				}
-				if (event) {
-					$('#events').text("");
-					$('#events').append('<p>' + event.Title + '</p>');
-				}
-				else
-				{
-					$('#events').text("");
-				}
 			}
-		});
+			if (event) {
+				$('#events').text("");
+				$('#events').append('<p>' + event.Title + '</p>');
+			}
+			else
+			{
+				$('#events').text("");
+			}
+		}
+	});
 	
     $('#planner').multiDatesPicker({
         firstDay: 1,
