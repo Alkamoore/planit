@@ -26,21 +26,21 @@
 			//Get the user/pass from the POST data
 			$username = addslashes($_POST['user']);
 			$password = addslashes($_POST['pass']);
+			
 			//Connect to the DB and find the user
 			$query = array('username'=>$username, 'password'=>md5($password));
-			$row = $db->users;//->findOne($query);
-			die(var_dump($row));
+			$row = $db->users->findOne($query);
+
 			if($row != NULL)
 			{
-				
 				//If the row exists, update the DB session log to match this user
 				$_SESSION['user_id'] = $row["user_id"];
 				$query = array('session_id'=>session_id());
 				$db->sessions->update($query,array('session_user_id'=>$_SESSION['user_id'], 
 					"session_logged_in"=>1));
 				//Update the actual session data
-				fetchSessionData(session_id());
-				$my_text = 'Welcome, ' . $_SESSION["username"] . "!";
+				fetchSessionData(session_id(), $db);
+				$my_text = 'Welcome, ' . $row["username"] . "!";
 			}
 			
 		}

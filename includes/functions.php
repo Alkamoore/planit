@@ -55,10 +55,10 @@ function sendMail($to, $subject, $message)
 	
 	if(!$mail->Send())
 	{
-		die('Mailer error: ' . $mail->ErrorInfo);
+		echo 'Mailer error: ' . $mail->ErrorInfo;
 	} else
 	{
-		die('Message has been sent.');
+		//die('Message has been sent.');
 	}
 }
 
@@ -67,7 +67,7 @@ function connect()
 	global $db;
     $connection = new MongoClient();
 	
-    $db = $connection->localhost;
+    $db = $connection->cs810;
     
     //$dbh = mysql_connect($dbhost, $dbusername, $dbpass) or die ("Could not connect");
     /*if (!mysql_select_db($dbname, $dbh)) {

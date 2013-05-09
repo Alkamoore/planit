@@ -48,9 +48,10 @@
 		{
 			if(isset($row['account_verified']))
 			{
-				$message = "Account for user " . $row['username'] . " has been activated. You may now <a href='login.php'>Login</a>.";
+				
 				$query = array('user_id'=>$row['user_id']);
-				$db->users($query, array('account_verified'=>1));
+				$db->users->update($query, array('account_verified'=>1));
+				$message = "Account for user " . $row['username'] . " has been activated. You may now <a href='login.php'>Login</a>.";
 				//mysql_query("UPDATE " . $SETTINGS["TABLE_PREFIX"] . "users SET account_verified = '1' WHERE user_id = " . $row['user_id']);
 			} else
 			{
