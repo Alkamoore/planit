@@ -1,0 +1,47 @@
+<section>
+	<form id="plan" method="post">
+		<h2>{EVENT_TITLE}</h2>
+			<p>
+				<strong>Where:</strong>{WHERE}<br/>
+				<strong>Comments:</strong>
+				{COMMENTS}
+				<br/>
+			</p>
+			<fieldset id="inputs">
+				<table>
+					<tr>
+						<th>
+							Day
+						</th>
+						<th>
+							Time
+						</th>
+						<th>
+							Can you make it?
+						</th>
+					</tr>
+					<!-- BEGIN days_row -->
+					<tr>
+						<th>{days_row.day}</th>
+						<td></td>
+						<td></td>
+					</tr>
+						<!-- BEGIN times_row -->
+						<tr>
+							<td></td>
+							<td>{days_row.times_row.time}</td>
+							<td><select name = "{days_row.times_row.day_id}[]">
+							<option value = '1'>Yes</option>
+							<option value = '2'>No</option>
+							<option value = '3'>(Yes)</option>
+							</td>
+						</tr>
+						<!-- END times_row -->
+					<!-- END day_row -->
+				</table>
+			</fieldset>
+			<fieldset id="actions">
+				<input type="submit" value="Save!" name="plan" id="submit"/>
+			</fieldset>
+	</form>
+</form>

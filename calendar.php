@@ -27,7 +27,7 @@
 			$dates = $db->dates->find(array('event_id'=>$e['event_id']));
 			foreach($dates as $d)
 			{
-				$events_js.="{Title: '{$e['event_title']}', Date: new Date('{$d['date']}') },";
+				$events_js.="{Title: '{$e['event_title']}', Date: new Date('{$d['date']}'), Time: '".implode(", ", $d['time'])."', Place: '{$e['event_place']}', ;Comments:'{$e['event_comments']}' },";	
 			}
 		}
 	}
