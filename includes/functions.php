@@ -55,10 +55,10 @@ function sendMail($to, $subject, $message)
 	
 	if(!$mail->Send())
 	{
-		echo 'Mailer error: ' . $mail->ErrorInfo;
+		die('Mailer error: ' . $mail->ErrorInfo);
 	} else
 	{
-		//echo 'Message has been sent.';
+		die('Message has been sent.');
 	}
 }
 

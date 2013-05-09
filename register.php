@@ -12,7 +12,8 @@
 	//Init the template (You can echo as many templates as listed in the filenames)
 	$main_body = new Template($SETTINGS["TEMPLATE_DIR"]);
 	$main_body->set_filenames(array(
-	 'index_body' => 'index.htm'
+	 'register_body' => 'register.htm',
+	 'simple_body'=>'simple_body.htm'
 	));
 
 	$errors = '';
@@ -25,6 +26,9 @@
 	$form_company = '';
 	$form_fname = '';
 	$form_lname = '';
+
+
+
 	
 	//Check if the form was submitted, and build up the errors list if there is a problem
 	//Basically if the errors string is not null when $_POST['formsubmit'] is set, then we'll display the same form with errors
@@ -32,15 +36,17 @@
 	{
 
 		$verify_key = addslashes($_GET['key']);
+		
 		$row = $db->users->findOne(array('verified_key'=> $verify_key));
 		//mysql_fetch_assoc(mysql_query("SELECT * FROM " . $SETTINGS["TABLE_PREFIX"] . "users WHERE verified_key = '" . $verify_key  . "'"));
 		$message = '';
-		if(!$row)
+		
+		if($row == NULL)
 		{
 			$message = "Error, invalid key.";
 		} else
 		{
-			if($row['account_verified'] == 0)
+			if(isset($row['account_verified']))
 			{
 				$message = "Account for user " . $row['username'] . " has been activated. You may now <a href='login.php'>Login</a>.";
 				$query = array('user_id'=>$row['user_id']);
@@ -61,6 +67,7 @@
 		return;
 	} else if(isset($_POST['formsubmit']) && isset($_POST['user']) && isset($_POST['email']) && isset($_POST['email_conf']) && isset($_POST['pass']) && isset($_POST['pass_conf']))
 	{
+		
 		$form_user = trim($_POST['user']);
 		if(strlen($form_user) < 6 || !preg_match('/^[A-Za-z0-9_]+$/', $form_user))
 		{
@@ -69,10 +76,10 @@
 		{
 			$errors .= 'Error, a user by that name already exists.<br />';
 		}
+	
 		
-
 		$form_email = trim($_POST['email']);
-		if(!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/', $form_email))
+		if(!preg_match('/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$/', $form_email))
 		{
 			$errors .= 'Error, invalid email address.<br />';
 		} else if($db->users->count(array('email'=>$form_email)) > 0)//mysql_num_rows(mysql_query("SELECT * FROM " . $SETTINGS["TABLE_PREFIX"] . "users WHERE email = '" . $form_email . "'"))
@@ -134,7 +141,8 @@
 		$main_body->assign_vars(array(
 			'MESSAGE' => 'Thanks for signing up, ' . $form_user . '! Please check your email for instructions on activating your account.'
 		));
-		$query = array('email'=>$form_email,'username'=>$form_user, 'password'=> md5($form_pass), 'fist_name'=>addslashes($form_fname), 'last_name'=> addslashes($form_lname), 'signup_date'=>time(), 'verified_key'=>$uid)
+		$query = array('email'=>$form_email,'username'=>$form_user, 'password'=> md5($form_pass), 'fist_name'=>addslashes($form_fname), 'last_name'=> addslashes($form_lname), 'signup_date'=>time(), 'verified_key'=>$uid);
+
 		$db->users->insert($query);
 		//mysql_query("INSERT INTO ". $SETTINGS["TABLE_PREFIX"] . "users (email, username, password, first_name, last_name, signup_date, verified_key) VALUES (" . values_list(array($form_email, $form_user, md5($form_pass), addslashes($form_fname), addslashes($form_lname), time(), $uid)) . ")");
 		//Echo everything
@@ -143,7 +151,7 @@
 		include('includes/footer.php');
 		
 		//Send mail
-		sendMail($form_email, 'PLANit! Account Activation', 'Click here to activate your account: http://' . $SETTINGS["DOMAIN"] . '/create_account.php?key='. $uid);
+		sendMail($form_email, 'PLANit! Account Activation', 'Click here to activate your account: http://' . $SETTINGS["DOMAIN"] . '/register.php?key='. $uid);
 	} else
 	{
 		//Assign template variables
@@ -152,20 +160,16 @@
 			'FORM_USER' => $form_user,
 			'FORM_EMAIL' => $form_email,
 			'FORM_EMAIL_CONF' => $form_email_conf,
-			'FORM_PASS' => $form_pass,
-			'FORM_PASS_CONF' => $form_pass_conf,
 			'FORM_COMPANY' => $form_company,
 			'FORM_FNAME' => $form_fname,
 			'FORM_LNAME' => $form_lname
 		));
 		//Echo everything
 		include('includes/header.php');
-		$main_body->pparse('create_account_body');
+		$main_body->pparse('register_body');
 		include('includes/footer.php');
 	}
 
-	//Echo everything
-	include('includes/header.php');
-	$main_body->pparse('index_body');
-	include('includes/footer.php');
+
+	
 ?>

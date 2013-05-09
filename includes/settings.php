@@ -13,5 +13,5 @@ $SETTINGS["SESSION_LENGTH_OUT"] = 300; //Session timeout for logged out users
 //$SETTINGS["TABLE_PREFIX"] = "cs546_";
 //$SETTINGS["UPLOAD_DIR"] = "devlocker_files";
 //$SETTINGS["UPLOAD_LIMIT"] = "2"; //Measured in MB
-//$SETTINGS["DOMAIN"] = "50.7.16.10/cs546";
+$SETTINGS["DOMAIN"] = "localhost/planit";
 ?>

@@ -1,19 +1,22 @@
 
 <section>
-	<form id="register">
+	<form id="register" method ="Post">
 		<h2>Registration</h2>
+		<p>
+			{ERRORS}
+		</p>
 			<fieldset id="inputs">
-				<input type="text" id="user" placeholder="Username" required/>
-				<input type="text" id="email" placeholder="Email Address" required/>
-				<input type="text" id="email_conf" placeholder="Confirm Email" required/>
-				<input type="password" id="pass" placeholder="Password" required/>
-				<input type="password" id="pass_conf" placeholder="Confirm Password" required/>
-				<input type="text" id="fname" placeholder="First Name" required/>
-				<input type="text" id="lname" placeholder="Last Name" required/>
-				<input type="password" id="company" placeholder="Company" />
+				<input type="text" id="user" name="user" placeholder="Username*" value = "{FORM_USER}" required/>
+				<input type="text" id="email" name="email" placeholder="Email Address*" value = "{FORM_EMAIL}" required/>
+				<input type="text" id="email_conf" name="email_conf" placeholder="Confirm Email*" value = "{FORM_EMAIL_CONF}" required/>
+				<input type="password" id="pass" name="pass" placeholder="Password*" required/>
+				<input type="password" id="pass_conf" name="pass_conf" placeholder="Confirm Password*" required/>
+				<input type="text" id="fname" name="fname" placeholder="First Name*" name="fname" value = "{FORM_FNAME}" required/>
+				<input type="text" id="lname" name="lname" placeholder="Last Name*" value = "{FORM_LNAME}" required/>
+				<input type="text" id="company" name="company" placeholder="Company" value = "{FORM_COMPANY}"/>
 			</fieldset>
 			<fieldset id="actions">
-				<input type="submit" value="Register" id="submit"/>
+				<input type="submit" name="formsubmit" id="submit" value="Register" />
 			</fieldset>
 	</form>
 </section>

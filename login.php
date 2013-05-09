@@ -22,16 +22,17 @@
 		$my_text = 'Invalid login information, please go back and try again.<br /><br /><a href="login.php">Return</a>';
 		if(isset($_POST['user']) && isset($_POST['pass']))
 		{
+
 			//Get the user/pass from the POST data
 			$username = addslashes($_POST['user']);
 			$password = addslashes($_POST['pass']);
-			
 			//Connect to the DB and find the user
 			$query = array('username'=>$username, 'password'=>md5($password));
-			$row = $db->users->findOne($query);
-
-			if($row)
+			$row = $db->users;//->findOne($query);
+			die(var_dump($row));
+			if($row != NULL)
 			{
+				
 				//If the row exists, update the DB session log to match this user
 				$_SESSION['user_id'] = $row["user_id"];
 				$query = array('session_id'=>session_id());
