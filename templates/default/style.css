@@ -118,6 +118,11 @@ p {
 	font-size: 0.9em;
 }
 
+p #error { 
+	color: rgba(128,86,101,1);
+	font-weight: thick;
+}
+
 img {
 	width: auto;
 	max-width: 100%;
@@ -352,7 +357,7 @@ fieldset {
 /*************************************/
 /*       Planning and Reg CSS       */
 /***********************************/
-#plan, #register {
+#plan, #register, #view {
 `   position: absolute;
     z-index: 0;
 	background-color: rgba(255,255,255,1);
@@ -424,6 +429,35 @@ fieldset {
     margin: 1em 3.5em 0em 1em;
 }
 
+
+#view h2{
+    text-shadow: 0 0.1em 0 rgba(0,0,0,.3), 0px 0.2em 0 rgba(0,0,0,.1);
+    text-transform: uppercase;
+    text-align: justify;
+    color: rgba(39,43,38,1);
+    margin: 0 0 1.4em 0;
+    letter-spacing: 0.2em;
+    font-family: 'Carrois Gothic', sans-serif;
+	font-size: 1.7em;
+	border-bottom: 0.1em solid rgba(168,168,168,1);
+}
+
+#view p{
+    text-shadow: 0 0.1em 0 rgba(0,0,0,.3), 0px 0.2em 0 rgba(0,0,0,.1);
+    text-transform: uppercase;
+    text-align: justify;
+    color: rgba(168,168,168,1);
+    margin: 0 0 1.4em 0;
+    letter-spacing: 0.2em;
+    font-family: 'Carrois Gothic', sans-serif;
+	font-size: 1.2em;
+}
+
+#view b{
+	font-weight: normal;
+    color: rgba(128,86,101,1);
+	
+}
 
 
 
