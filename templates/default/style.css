@@ -94,6 +94,39 @@ section {
 	background-color: rgba(255,255,255,1);
 	padding: 1em;
 }
+
+p { 
+	color: rgba(168,168,168,1);
+	font-family: 'Carrois Gothic', sans-serif;
+	text-indent: 2em;
+	text-align: justify;
+	font-size: 0.9em;
+}
+
+article {
+	column-count: 3;
+			-moz-column-count: 3;
+			-webkit-column-count: 3;
+		column-gap: 2em;
+			-moz-column-gap: 2em;
+			-webkit-column-gap: 2em;
+}
+
+article p {
+	text-align: center;
+	text-indent: 0em;
+}
+
+article img {
+	display: block;
+	margin: auto;
+	width: auto;
+	max-width: 100%;
+	min-height:0%;
+	height: auto;
+	max-height: 100%;
+	min-width: 0%;
+}
 	
 h1 {
 	color: rgba(39,43,38,1);
@@ -108,15 +141,8 @@ h2 {
 	font-family: 'Carrois Gothic', sans-serif;	
 	font-weight: normal;
 	font-size: 1.5em;
+	text-align: center;
 }	
-
-p { 
-	color: rgba(168,168,168,1);
-	font-family: 'Carrois Gothic', sans-serif;
-	text-indent: 2em;
-	text-align: justify;
-	font-size: 0.9em;
-}
 
 img {
 	width: auto;
@@ -465,6 +491,12 @@ fieldset {
 	fieldset {
 		margin: 1em 2em;
 		width: 100%;
+	}
+	
+	article {
+		column-count: 1;
+			-moz-column-count: 1;
+			-webkit-column-count: 1;
 	}
 
 
