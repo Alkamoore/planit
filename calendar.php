@@ -15,6 +15,28 @@
 	 'calendar_body' => 'calendar.htm'
 	));
 	
+	$user_email=$db->users->findOne(array('user_id'=>$_SESSION['user_id']));
+	$user_email=$user_email['email'];
+
+	$events_js = "[";
+	$events = $db->events->find();
+	foreach($events as $e) 
+	{
+		if(in_array($user_email, $e['event_people']))
+		{
+			$dates = $db->dates->find(array('event_id'=>$e['event_id']));
+			foreach($dates as $d)
+			{
+				$events_js.="{Title: '{$e['event_title']}', Date: new Date('{$d['date']}') },";
+			}
+		}
+	}
+
+	$events_js = substr($events_js,0,-1);
+	$events_js .= "]";
+
+	$main_body->assign_vars(array('EVENTS'=>$events_js));
+
 	$SETTINGS["CAL"] = "cal";
 	//Echo everything
 	include('includes/header.php');
