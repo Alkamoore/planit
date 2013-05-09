@@ -26,7 +26,9 @@
 		$errors="";
 		$event_title = addslashes($_POST['what']);
 		$event_dates = explode(',', $_POST['when']);
-		$event_times = $_POST['time'];
+		$event_hours = $_POST['hour'];
+		$event_min = $_POST['min'];
+		$event_ap = $_POST['AP'];
 		$event_place = addslashes($_POST['where']);
 		$event_comments = addslashes($_POST['comments']);
 		$event_people = explode(";",addslashes($_POST['who']));
@@ -48,11 +50,23 @@
 				$event_names .= $row == NULL ? $people.", " : $row['first_name']." ".$row['last_name'].", ";
 			}
 		}
-
-		foreach($event_times as $time)
+		
+		$count=0;
+		//die(var_dump($event_ap[0]));
+		foreach($event_hours as $hour)
 		{
-			$times .= $time.":00, ";
+			if($hour != 0)
+			{
+				$ap = $event_ap[$count] == "1"? "AM" : "PM";
+				$min = $event_min[$count]< 10 ? $event_min[$count]."0": $event_min[$count];
+				$event_times[] =$hour.":".$min." ".$ap;
+				$times .= $hour.":".$min." ".$ap.", ";
+				
+			}
+			$count ++;
 		}
+
+
 		if($errors == "")
 		{
 			$query = array('event_id'=>$event_id, 'event_title' => $event_title, 'event_place'=>$event_place, 'event_comments'=>$event_comments, 'event_people'=>$event_people, 'finalized'=>0);

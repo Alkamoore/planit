@@ -4,7 +4,8 @@
 			<fieldset id="inputs">
 				<input type="text" id="what" name = "what" placeholder="What?" required/>
 				<input type="text" name = "when" id="planner" placeholder="When?" required/>
-				<select id="hour">
+				<select name="hour[]" id="hour">
+					<option value="0">00</option>
 					<option value="1">01</option>
 					<option value="2">02</option>
 					<option value="3">03</option>
@@ -18,20 +19,23 @@
 					<option value="11">11</option>
 					<option value="12">12</option>
 				</select>
-				<select id="minute">
-					<option value="1">00</option>
-					<option value="2">10</option>
-					<option value="3">15</option>
-					<option value="4">20</option>
-					<option value="5">30</option>
-					<option value="6">40</option>
-					<option value="6">45</option>
-					<option value="8">50</option>
+				<select name="min[]" id="minute">
+					<option value="0">00</option>
+					<option value="10">10</option>
+					<option value="15">15</option>
+					<option value="20">20</option>
+					<option value="30">30</option>
+					<option value="40">40</option>
+					<option value="45">45</option>
+					<option value="50">50</option>
 				</select>
-				<select id="ampm">
+				<select name="AP[]" id="ampm">
 					<option value="1">AM</option>
 					<option value="2">PM</option>
 				</select>
+				<br class = "time"/>
+				<br/>
+				<a href ="#" id ="time">Add More Times</a>
 				<input type="text" id="where" name = "where" placeholder="Where?" required/>
 				<input type="text" id="invite" name = "who" placeholder="With Who? (Please seperate emails by ; )" required/>
 				<textarea id="comments" name="comments" placeholder="Comments" /></textarea>
@@ -42,3 +46,15 @@
 	</form>
 </section>
 	
+<script type="text/javascript">
+ function addTimeRow(){
+       $('br.time:last').after('<select name="hour[]" id="hour"><option value="0">00</option><option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option> </select> <select name="min[]" id="minute"><option value="0">00</option><option value="1">10</option><option value="2">15</option><option value="3">20</option><option value="4">30</option><option value="5">40</option><option value="6">45</option><option value="7">50</option></select> <select name="AP[]" id="ampm"><option value="1">AM</option><option value="2">PM</option></select><br class = "time"/>');
+}
+$(document).ready(function(){
+	$('a#time').click(function() {
+		addTimeRow();
+		return false;
+	});
+});
+
+</script>
