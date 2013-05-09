@@ -45,6 +45,7 @@ function sendMail($to, $subject, $message)
 	$mail->SMTPSecure = $smtp_secure; // secure transfer enabled REQUIRED for GMail
 	$mail->Host = $smtp_host;
 	$mail->Port = $smtp_port; 
+	$mail->IsHTML(true);
 	$mail->Username = $smtp_username;  
 	$mail->Password = $smtp_password;           
 	$mail->SetFrom($smtp_from, $smtp_from_name);
@@ -142,8 +143,12 @@ function reload($r, $s) {
 	echo "<script type='text/javascript'>refresh('$r', $s)</script>";
 }
 
-
-function next_id($d)
+function next_event_id()
+{
+	global $db;
+	return ($db->events->count()*13)+1;
+}
+function next_id()
 {
 	global $db;
 	return $db->users->count()+1;

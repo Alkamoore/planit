@@ -1,10 +1,11 @@
 
 <section>
-	<form id="plan">
+	<form id="plan" method="post">
 		<h2>Plan Something</h2>
 			<fieldset id="inputs">
-				<input type="text" id="planner" placeholder="When?" required/>
-				<select multiple>
+				<input type="text" id="what" name = "what" placeholder="What?" required/>
+				<input type="text" name = "when" id="planner" placeholder="When?" required/>
+				<select name = "time[]" multiple>
 					<option value="1">12:00AM</option>
 					<option value="2">1:00AM</option>
 					<option value="3">2:00AM</option>
@@ -30,13 +31,12 @@
 					<option value="23">10:00PM</option>
 					<option value="24">11:00PM</option>
 				</select>
-				<input type="text" id="where" placeholder="Where?" required/>
-				<input type="text" id="what" placeholder="What?" required/>
-				<input type="text" id="invite" placeholder="With Who?" required/>
-				<textarea id="comments" placeholder="Comments" /></textarea>
+				<input type="text" id="where" name = "where" placeholder="Where?" required/>
+				<input type="text" id="invite" name = "who" placeholder="With Who? (Please seperate emails by ; )" required/>
+				<textarea id="comments" name="comments" placeholder="Comments" /></textarea>
 			</fieldset>
 			<fieldset id="actions">
-				<input type="submit" value="Plan It!" id="submit"/>
+				<input type="submit" value="Plan It!" name="plan" id="submit"/>
 			</fieldset>
 	</form>
 </section>

@@ -93,6 +93,8 @@ $.widget("ech.multiselect", {
 		// build menu
 		this.refresh( true );
 
+
+
 		// some addl. logic for single selects
 		if( !o.multiple ){
 			menu.addClass('ui-multiselect-single');
