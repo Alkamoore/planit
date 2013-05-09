@@ -98,26 +98,33 @@ function rrmdir($dir)
     }
     rmdir($dir);
 }
-function fetchSessionData($sid, $d)
+function fetchSessionData($sid)
 {
 	global $_SESSION;
 	global $SETTINGS;
+	global $db;
 	$sid_query = array('session_id'=>$sid);
-	$sessData = $d->sessions->findOne($sid_query);
+	$sessData = $db->sessions->findOne($sid_query);
+	
 	//$sid_query = mysql_query('SELECT * FROM ' . $SETTINGS["TABLE_PREFIX"] . 'sessions WHERE session_id = "' . $sid . '"');
 	if($sessData != NULL)
 	{
+
 		$usr_query = array('user_id' => $_SESSION['user_id']);
-		$userData = $d->users->findOne($usr_query);
+		$userData = $db->users->findOne($usr_query);
+		
 		//$usr_query = mysql_query("SELECT * FROM " . $SETTINGS["TABLE_PREFIX"] . "users WHERE user_id = " . $_SESSION['user_id']);
+		//die(var_dump($_SESSION['user_id']));
 		if($userData != NULL)
 		{
+
 			//$userData = mysql_fetch_assoc($usr_query);
 			//$sessData = mysql_fetch_assoc($sid_query);
 			$_SESSION['user_id'] = $sessData['session_user_id'];
 			$_SESSION['is_logged_in'] =  $sessData['session_logged_in'];
 			$_SESSION['session_time'] =  time();
 			$_SESSION['username'] =  $userData['username'];
+
 			session_id($sessData['session_id']);
 		} else
 		{
@@ -134,20 +141,14 @@ function redirect($r) {
 function reload($r, $s) {
 	echo "<script type='text/javascript'>refresh('$r', $s)</script>";
 }
-//Get latest auto_increment value
-function mysql_next_id($table)
+
+
+function next_id($d)
 {
-    $tablename 		= $table;
-	$next_increment 	= 0;
-	$qShowStatus 		= "SHOW TABLE STATUS LIKE '$tablename'";
-	$qShowStatusResult 	= mysql_query($qShowStatus) or die ( "Query failed: " . mysql_error() . "<br/>" . $qShowStatus );
+	global $db;
+	return $db->users->count()+1;
 
-	$row = mysql_fetch_assoc($qShowStatusResult);
-	$next_increment = $row['Auto_increment'];
-
-	return $next_increment;
 }
-
 //IP encoding methods extracted from phpBB forums. Special thanks to them!
 function encode_ip($dotquad_ip)
 {

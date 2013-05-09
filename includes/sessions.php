@@ -12,17 +12,14 @@ session_start();
 connect();
 
 
-$query = array('session_user_id' => array('$lte'=> 0), '$where' => time()." - session_time  > ".$SETTINGS["SESSION_LENGTH_OUT"]);
+$query = array('session_user_id' => array('$lte'=> 0), 'session_time' < 0);
 $db->sessions->remove($query);
 
-$query = array('session_user_id' => array('$gt'=> 0), '$where' => time()." - session_time  > ".$SETTINGS["SESSION_LENGTH_IN"]);
+$query = array('session_user_id' => array('$gt'=> 0),'session_time' < 0);
 $db->sessions->remove($query);
-
-//mysql_query("DELETE FROM ". $SETTINGS["TABLE_PREFIX"] . "sessions WHERE session_user_id <= 0 AND " . time() . " - session_time > " . $SETTINGS["SESSION_LENGTH_OUT"]);
-//mysql_query("DELETE FROM ". $SETTINGS["TABLE_PREFIX"] . "sessions WHERE session_user_id > 0 AND " . time() . " - session_time > " . $SETTINGS["SESSION_LENGTH_IN"]);
 
 //Get session data
-fetchSessionData(session_id(), $db);
+fetchSessionData(session_id());
 
 //Attempt to get session data
 $query = array('session_user_id' => session_id());
@@ -33,9 +30,9 @@ $query = array('session_user_id' => session_id());
 if($db->sessions->count($query) == 0 || session_id() == '' || (time() - $_SESSION['session_time'] > $SETTINGS["SESSION_LENGTH_IN"] && $_SESSION['is_logged_in']) || ((time() - $_SESSION['session_time'] > $SETTINGS["SESSION_LENGTH_OUT"] && !$_SESSION['is_logged_in'])))
 {
 	//Create session data
-	resetSessionData();
+	//resetSessionData();
 	//Add session data to the database
-	$query = array("session_id"=>session_id(), "sesstion_user_id" => $_SESSION['user_id'], "session_start"=>time(), "session_time"=>time(), session_ip => $ip, "session_logged_in"=>$_SESSION['is_logged_in']);
+	$query = array("session_id"=>session_id(), "session_user_id" => $_SESSION['user_id'], "session_start"=>time(), "session_time"=>time(), session_ip => $ip, "session_logged_in"=>$_SESSION['is_logged_in']);
 	$db->sessions->insert($query);
 		
 	//mysql_query("INSERT INTO ". $SETTINGS["TABLE_PREFIX"] . "sessions (session_id, session_user_id, session_start, session_time, session_ip,  session_logged_in) VALUES ('" . session_id() . "', " . $_SESSION['user_id'] . ", " . time() . ", " . time() . ", '" . $ip . "', " . $_SESSION['is_logged_in'] . ")");
@@ -46,25 +43,23 @@ if($db->sessions->count($query) == 0 || session_id() == '' || (time() - $_SESSIO
 }
 if ((bool) $_SESSION['is_logged_in'])
 {
-	$sid_query = array('session_id'=> $sid);
+	$sid_query = array('session_id'=> session_id());
 	$sessData = $db->sessions->findOne($sid_query);
 	//$sessData = mysql_fetch_assoc(mysql_query("SELECT * FROM ". $SETTINGS["TABLE_PREFIX"] . "sessions WHERE session_id = '" . session_id() . "'"));
 	$usr_query = array('user_id' => $_SESSION['user_id']);
 	$userData = $db->users->findOne($usr_query);	
-	//$userData = mysql_fetch_assoc(mysql_query("SELECT * FROM ". $SETTINGS["TABLE_PREFIX"] . "users WHERE user_id = " . $_SESSION['user_id']));
 	//Make sure they didn't hack the session data
-	if($_SESSION['user_id'] != $sessData["session_user_id"] || !$sessData["session_logged_in"] || $userData["account_verified"] == 0)
+
+	if($_SESSION['user_id'] != $sessData["session_user_id"] || $sessData["session_logged_in"] == 0 || $userData["account_verified"] == 0)
 	{
 		$db->sessions->remove($sid_query);
-		//mysql_query("DELETE FROM ". $SETTINGS["TABLE_PREFIX"] . "sessions WHERE session_id = " . session_id());
 		$query = array("session_user_id"=>$userData["user_id"]);
 		$db->sessions->remove($query);
-		//mysql_query("DELETE FROM ". $SETTINGS["TABLE_PREFIX"] . "sessions WHERE session_user_id = " . $userData["user_id"]);
 		resetSessionData();
 		//Re-create the session
-		$query = array("session_id"=>session_id(), "sesstion_user_id" => $_SESSION['user_id'], "session_start"=>time(), "session_time"=>time(), session_ip => $ip, "session_logged_in"=>$_SESSION['is_logged_in']);
+		$query = array("session_id"=>session_id(), "session_user_id" => $_SESSION['user_id'], "session_start"=>time(), "session_time"=>time(), session_ip => $ip, "session_logged_in"=>$_SESSION['is_logged_in']);
 		$db->sessions->insert($query);
-		//mysql_query("INSERT INTO ". $SETTINGS["TABLE_PREFIX"] . "sessions (session_id, session_user_id, session_start, session_time, session_ip,  session_logged_in) VALUES ('" . session_id() . "', " . $_SESSION['user_id'] . ", " . time() . ", " . time() . ", '" . $ip . "', " . $_SESSION['is_logged_in'] . ")");
+		
 	} else
 	{
 		//Update their last active time

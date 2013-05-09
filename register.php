@@ -46,11 +46,11 @@
 			$message = "Error, invalid key.";
 		} else
 		{
-			if(isset($row['account_verified']))
+			if(!isset($row['account_verified']))
 			{
 				
 				$query = array('user_id'=>$row['user_id']);
-				$db->users->update($query, array('account_verified'=>1));
+				$db->users->update($query, array('$set'=>array('account_verified'=>1)));
 				$message = "Account for user " . $row['username'] . " has been activated. You may now <a href='login.php'>Login</a>.";
 				//mysql_query("UPDATE " . $SETTINGS["TABLE_PREFIX"] . "users SET account_verified = '1' WHERE user_id = " . $row['user_id']);
 			} else
@@ -137,12 +137,12 @@
 	{
 		//Get a unique ID for the verification email
 		$uid = $form_user.getUID();
-		
+		$id = next_id($db);
 		//No errors, success!!!
 		$main_body->assign_vars(array(
 			'MESSAGE' => 'Thanks for signing up, ' . $form_user . '! Please check your email for instructions on activating your account.'
 		));
-		$query = array('email'=>$form_email,'username'=>$form_user, 'password'=> md5($form_pass), 'fist_name'=>addslashes($form_fname), 'last_name'=> addslashes($form_lname), 'signup_date'=>time(), 'verified_key'=>$uid);
+		$query = array('user_id'=> $id, 'email'=>$form_email,'username'=> strtolower($form_user), 'password'=> md5($form_pass), 'fist_name'=>addslashes($form_fname), 'last_name'=> addslashes($form_lname), 'signup_date'=>time(), 'verified_key'=>$uid);
 
 		$db->users->insert($query);
 		//mysql_query("INSERT INTO ". $SETTINGS["TABLE_PREFIX"] . "users (email, username, password, first_name, last_name, signup_date, verified_key) VALUES (" . values_list(array($form_email, $form_user, md5($form_pass), addslashes($form_fname), addslashes($form_lname), time(), $uid)) . ")");
